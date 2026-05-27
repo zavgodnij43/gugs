@@ -16,3 +16,10 @@ class Book(Base):
     description = Column(String, index=True)
     author_id = Column(Integer, ForeignKey("author.id"))
     author = relationship("Author", back_populates="books")
+
+class User(Base):
+   __tablename__ = "users"
+   id = Column(Integer, primary_key=True, index=True)
+   login = Column(String, unique=True, index=True)
+   hashed_password = Column(String)
+   rights = Column(String, default="user")
